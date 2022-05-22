@@ -1,10 +1,29 @@
+//Packages, Features, etc
 import React from 'react';
+import {Route, Routes} from 'react-router-dom'
+
+//Css, Images, etc
 import logo from './logo.svg';
 import './App.css';
 
+//Pages
+import LoginPage from './Components/Pages/LoginPage';
+
 function App() {
   return (
-    <div className="App">
+    <>
+    <LoginPage/>
+    
+    </>
+  );
+}
+
+export default App;
+
+
+
+/*
+<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,7 +39,4 @@ function App() {
         </a>
       </header>
     </div>
-  );
-}
-
-export default App;
+*/
