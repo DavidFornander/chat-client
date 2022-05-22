@@ -1,20 +1,22 @@
 //Packages, Features, etc
 import React from 'react';
-import {Route, Routes} from 'react-router-dom'
-
+import { Route, Routes } from 'react-router-dom'
 //Css, Images, etc
 import logo from './logo.svg';
 import './App.css';
-
 //Pages
-import LoginPage from './Components/Pages/LoginPage';
+import LoginPage from './components/Pages/LoginPage/index';
+import HomePage from './components/Pages/HomePage/index';
+
+
+let name: String = "David";
+
 
 function App() {
   return (
-    <>
-    <LoginPage/>
+
+    <div className='App'> Text </div>
     
-    </>
   );
 }
 
@@ -39,4 +41,13 @@ export default App;
         </a>
       </header>
     </div>
+
+
+
+    <Routes>
+      <Route path='/' element={<LoginPage/>}/>
+      <Route path='/messages' element={<HomePage/>}/> 
+    </Routes>
+ 
+    
 */
