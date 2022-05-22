@@ -1,6 +1,6 @@
 //Packages, Features, etc
 import React from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 //Css, Images, etc
 import './App.css';
 //Pages
@@ -14,10 +14,13 @@ let name: String = "David";
 
 const App: React.FC = () => {
   return (
-
-    <div>
-      Main
-    </div>
+  
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LoginPage/>}/>
+      <Route path='/test' element={<HomePage/>}/>
+    </Routes>
+  </BrowserRouter>
     
   );
 };
