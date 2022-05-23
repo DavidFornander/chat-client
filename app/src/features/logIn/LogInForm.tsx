@@ -1,4 +1,6 @@
-import { FC, FormEvent, useRef } from 'react';
+import { FC, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import store, { selectPosts, add } from '../../store';
@@ -11,17 +13,21 @@ const LogInForm: FC = () => {
 
     const posts = useSelector(selectPosts)
     const dispatch = useDispatch();
-
-    const newUserRef = useRef<HTMLInputElement>(null);
+    let navigate = useNavigate();
 
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as typeof e.target & {
             name: {value: string}
+            usr: {value: string}
         }
 
         console.log(target.name.value)
-        dispatch(add(target.name.value))
+        
+        if (target.name.value != "") {
+            dispatch(add(target.name.value))
+            navigate('messages')
+        }
     }
 
     return (
