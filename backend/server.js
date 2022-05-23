@@ -6,9 +6,13 @@ const port = 3000
 
 sequelize.sync({ force: true }).then(() => console.log('db is ready')); // force: true (forces layout to match User.js structure.)
 
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+
+
 
 app.post('/users', async (req, res) => {
   await User.create(req.body);

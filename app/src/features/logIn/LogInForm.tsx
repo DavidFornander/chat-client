@@ -1,11 +1,11 @@
 import { FC, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import { Box, TextField, Typography, InputLabel, Button } from '@mui/material';
+
 import { selectPosts, add } from '../../store';
 
-import { Box, TextField, Typography, InputLabel, Button } from '@mui/material';
+
 
 
 

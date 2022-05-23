@@ -4,7 +4,7 @@
 }
 
 .App-header {
-  background-color: #cac2c2;
+  background-color: #c3c3c3;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -14,18 +14,6 @@
   color: rgb(0, 0, 0);
 }
 
-.Body {
-  background-color: #8f6d6d;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 1vmin);
-  color: rgb(0, 0, 0);
-}
-
-/* Clear floats after the columns */
 .Section::after {
   content: "";
   display: table;
@@ -35,31 +23,49 @@
 .Nav {
   float: left;
   width: 30%;
-  min-height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
+  min-height: 80vh;
+  background: #ffffff;
   padding: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1vmin);
+  color: rgb(0, 0, 0);
 }
 
 .Article {
   float: left;
   padding: 0px;
   width: 70%;
-  background-color: #f1f1f1;
-  min-height: 300px; /* only for demonstration, should be removed */
+  background-color: #ffffff;
+  min-height: 80vh;
+  color: rgb(0, 0, 0);
 }
 
 .Footer {
-  background-color: rgb(181, 160, 160);
-  padding: 10px;
+  background-color: #ffffff;
+  padding: 0px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   flex-direction:row;
   align-items: center;
   justify-content: center;
+  height: 10vh;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  background-color: #999797;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
 }

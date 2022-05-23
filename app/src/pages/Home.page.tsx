@@ -4,7 +4,7 @@ import React, { FormEvent } from 'react'
 
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import store, { selectPosts, add } from '../store';
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Divider } from "@mui/material";
 
 
 
@@ -24,7 +24,7 @@ function UL<T>({
   return (
     <ul>
       {items.map((item, index) => (
-        <li onClick={() => itemClick(item)} key={index}>
+        <li key={index}>
           {render(item)}
         </li>
       ))}
@@ -53,7 +53,7 @@ const HomePage = () => {
   return (
     <div>
       <header className="App-header">
-        Header
+        QTE &lt;3
       </header>
 
       <section className="Section">
@@ -71,6 +71,23 @@ const HomePage = () => {
             itemClick={() => { }}
             render={(todo) => <>{todo.text}</>}
           />
+
+          
+          <Divider/>
+          <div className="card">
+              <div className="container">
+                <h4><b>Jane Doe</b></h4>
+                <p>Interior Designer</p>
+              </div>
+          </div>
+          <Divider/>
+          <div className="card">
+              <div className="container">
+                <h4><b>Jane Doe</b></h4>
+                <p>Interior Designer</p>
+              </div>
+          </div>
+
         </article>
 
       </section>
