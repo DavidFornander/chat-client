@@ -1,14 +1,27 @@
-import { FC, FormEvent } from 'react';
+import { FC, FormEvent, useRef } from 'react';
 
-import { Box, TextField, Typography, InputLabel, Button } from '@mui/material'
-import { VerticalAlignCenter } from '@mui/icons-material';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import store, { selectPosts, add } from '../../store';
+
+import { Box, TextField, Typography, InputLabel, Button } from '@mui/material';
+
 
 
 const LogInForm: FC = () => {
 
+    const posts = useSelector(selectPosts)
+    const dispatch = useDispatch();
+
+    const newUserRef = useRef<HTMLInputElement>(null);
+
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("ping")
+        const target = e.target as typeof e.target & {
+            name: {value: string}
+        }
+
+        console.log(target.name.value)
+        dispatch(add(target.name.value))
     }
 
     return (
@@ -17,7 +30,7 @@ const LogInForm: FC = () => {
             padding: 2,
             width: '300px',
             marginTop: 2,
-            }}
+        }}
         >
             <form onSubmit={onSubmitHandler}>
                 <Typography textAlign='center' fontWeight='bold'> Welcome </Typography>
@@ -32,7 +45,7 @@ const LogInForm: FC = () => {
                     type='submit'
                     fullWidth
                 >
-                    log-in 
+                    log-in
                 </Button>
             </form>
         </Box>
