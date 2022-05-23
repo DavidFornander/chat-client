@@ -5,11 +5,11 @@ import { ThemeProvider } from '@mui/material';
 
 //Css, Images, etc
 import './App.css';
-import { theme } from './components/shared/theme'
+import { theme } from './shared/theme'
 
 //Pages
-import LoginPage from './components/pages/LogIn.page';
-import HomePage from './components/pages/Home.page';
+import LoginPage from './pages/LogIn.page';
+import HomePage from './pages/Home.page';
 
 
 
