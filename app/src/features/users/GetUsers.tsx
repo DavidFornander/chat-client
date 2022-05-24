@@ -16,7 +16,7 @@ const GetUsers = () => {
         password: 'init'
     }]);
 
-    const getUsers = async () => {
+    const fetchUsers = async () => {
         try {
             const { data } = await axios.get(url)
             console.log(data);
@@ -86,10 +86,8 @@ const GetUsers = () => {
                 render={(data) => <>{data.name}</>}
                 render2={(data) => <>{data.email}</>}
             >
-
             </UL>
-
-            <button className='btn' onClick={getUsers}>
+            <button className='btn' onClick={fetchUsers}>
                 Get Users
             </button>
         </div>

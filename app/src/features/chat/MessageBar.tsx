@@ -19,8 +19,8 @@ const MessageBar = () => {
 
     if (target.name.value != "") {
       dispatch(add(target.name.value))
+      console.log("msg: Sent")
     }
-    console.log("msg: Sent")
   }
 
   return (

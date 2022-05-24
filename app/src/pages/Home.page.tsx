@@ -4,6 +4,9 @@ import MessageBar from '../features/chat/MessageBar';
 import Post from "../features/post/Post";
 import UserPanel from "../features/chat/UserPanel";
 import GetUsers from "../features/users/GetUsers";
+import GetPosts from "../features/post/GetPosts";
+import AddPostBar from "../features/post/AddPostBar";
+
 
 
 const HomePage = () => {
@@ -21,13 +24,13 @@ const HomePage = () => {
           <GetUsers></GetUsers>
         </nav>
         <article className="Article">
-          <Post></Post>
+          <GetPosts/>
         </article>
       </section>
 
       {/* footer section*/}
       <footer className="Footer">
-        <MessageBar></MessageBar>
+        <AddPostBar/>
       </footer>
     </>
   );
