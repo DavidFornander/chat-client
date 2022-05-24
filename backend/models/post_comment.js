@@ -12,7 +12,7 @@ post_comment.init({
     primaryKey: true,
     autoIncrement: true
   },
-  post_id: {
+  post_id: { // Foreign Key
     type: DataTypes.INTEGER,
 
     reference: {
@@ -20,7 +20,7 @@ post_comment.init({
       key: 'post_id',
     }
   },
-  user_id: {
+  user_id: { // Foreign Key
     type: DataTypes.INTEGER,
 
     reference: {

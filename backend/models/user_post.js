@@ -10,7 +10,7 @@ user_post.init({
     primaryKey: true,
     autoIncrement: true
   },
-  user_id: {
+  user_id: { // Foreign Key
     type: DataTypes.INTEGER,
 
     reference: {
@@ -18,7 +18,6 @@ user_post.init({
 
       key: 'user_id',
     }
-
   },
   text: {
     type: DataTypes.TEXT
