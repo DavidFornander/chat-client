@@ -1,13 +1,10 @@
-import "../App.css"
 import { Link } from 'react-router-dom'
 import React, { FormEvent } from 'react'
-
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import store, { selectPosts, add } from '../store';
 import { TextField, Button, Typography, Divider } from "@mui/material";
+import { Provider, useSelector, useDispatch } from 'react-redux';
 
-
-
+import store, { selectPosts, add } from '../store';
+import "../App.css"
 
 function UL<T>({
   items,
@@ -58,11 +55,20 @@ const HomePage = () => {
 
       <section className="Section">
         <nav className="Nav">
-          <UL
-            items={posts}
-            itemClick={() => { }}
-            render={(todo) => <>{todo.text}</>}
-          />
+        <Divider/>
+          <div className="card">
+              <div className="container">
+                <h4><b>David</b></h4>
+                <p>Interior Designer</p>
+              </div>
+          </div>
+          <Divider/>
+          <div className="card">
+              <div className="container">
+                <h4><b>Erik</b></h4>
+                <p>Interior Designer</p>
+              </div>
+          </div>
         </nav>
 
         <article className="Article">
@@ -72,31 +78,12 @@ const HomePage = () => {
             render={(todo) => <>{todo.text}</>}
           />
 
-          
-          <Divider/>
-          <div className="card">
-              <div className="container">
-                <h4><b>Jane Doe</b></h4>
-                <p>Interior Designer</p>
-              </div>
-          </div>
-          <Divider/>
-          <div className="card">
-              <div className="container">
-                <h4><b>Jane Doe</b></h4>
-                <p>Interior Designer</p>
-              </div>
-          </div>
-
         </article>
 
       </section>
 
       <footer className="Footer">
-
-        <h1>msg:</h1>
         <form onSubmit={onSubmitHandler}>
-
           <TextField type='text' name='name' id='name' />
           <Button
             style={{
