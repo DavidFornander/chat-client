@@ -1,6 +1,9 @@
 import "../index.css"
 import MessagePanel from '../features/chat/MessagePanel';
 import MessageBar from '../features/chat/MessageBar';
+import Post from "../features/post/Post";
+import UserPanel from "../features/chat/UserPanel";
+import GetUsers from "../features/users/GetUsers";
 
 
 const HomePage = () => {
@@ -13,14 +16,16 @@ const HomePage = () => {
 
       <section className="Section">
         <nav className="Nav">
+          <UserPanel></UserPanel>
+          <GetUsers></GetUsers>
         </nav>
         <article className="Article">
-          <MessagePanel></MessagePanel>
+          <Post></Post>
         </article>
       </section>
 
-      <footer className="Footer">
-        <MessageBar></MessageBar>
+      <footer>
+        Footer
       </footer>
     </div>
   );

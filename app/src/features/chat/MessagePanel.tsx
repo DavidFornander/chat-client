@@ -10,14 +10,12 @@ const MessagePanel = () => {
   function UL<T>({
     items,
     render,
-    itemClick,
   }: React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLUListElement>,
     HTMLUListElement
   > & {
     items: T[];
     render: (item: T) => React.ReactNode;
-    itemClick: (item: T) => void;
   }) {
     return (
       <ul>
@@ -34,8 +32,7 @@ const MessagePanel = () => {
   return (
     <UL
       items={posts}
-      itemClick={() => { }}
-      render={(todo) => <>{todo.text}</>}
+      render={(data) => <>{data.usr.concat(": ", data.text.toString())}</>}
     />
   )
 }

@@ -7,7 +7,6 @@ const LoginPage = () => {
         <div>
             <LogInForm />
         </div>
-
     )
 }
 

@@ -14,47 +14,6 @@
   color: rgb(0, 0, 0);
 }
 
-.Section::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.Nav {
-  float: left;
-  width: 30%;
-  min-height: 80vh;
-  background: #ffffff;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 1vmin);
-  color: rgb(0, 0, 0);
-}
-
-.Article {
-  float: left;
-  padding: 0px;
-  width: 70%;
-  background-color: #ffffff;
-  min-height: 80vh;
-  color: rgb(0, 0, 0);
-}
-
-.Footer {
-  background-color: #ffffff;
-  padding: 0px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction:row;
-  align-items: center;
-  justify-content: center;
-  height: 10vh;
-}
-
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;

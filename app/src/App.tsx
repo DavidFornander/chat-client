@@ -3,7 +3,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material';
 
-
 //Css, Images, etc
 import './App.css';
 import { theme } from './shared/theme'
@@ -12,10 +11,7 @@ import { theme } from './shared/theme'
 import LoginPage from './pages/LogIn.page';
 import HomePage from './pages/Home.page';
 
-
-
 let name: String = "David";
-
 
 const App: React.FC = () => {
   return (

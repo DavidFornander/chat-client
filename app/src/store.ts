@@ -1,6 +1,5 @@
 
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Statement } from "sqlite";
 
 
 interface Post {
@@ -8,12 +7,6 @@ interface Post {
     usr: String,
     text: String,
 };
-
-// let a: Post = {
-//     id: 21,
-//     usr: 'david',
-//     text: 'this is a message.'
-// };
 
 interface PostSliceState {
     posts: Post[];
@@ -39,7 +32,7 @@ export const postSlice = createSlice({
             ]
         },
         remove: (state, action: PayloadAction<Number>) =>{
-            
+            //Implement remove function here
         }
     },
 })
