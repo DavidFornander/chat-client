@@ -19,7 +19,7 @@ const LogInForm = () => {
       
         if( name != "" && email != "" && password != "" ){
             try {
-                const resp = await axios.post(url, { username: name, email: email, password: password })
+                const resp = await axios.post(url, { name: name, email: email, password: password })
                 navigate("messages")
             } catch (error) {
                 console.log(error);

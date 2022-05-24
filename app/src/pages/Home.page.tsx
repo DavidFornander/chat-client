@@ -9,14 +9,15 @@ import GetUsers from "../features/users/GetUsers";
 const HomePage = () => {
 
   return (
-    <div>
-      <header className='basic-header'>
+    <>
+      {/* header section*/}
+      <header className='Header'>
         QTE &lt;3
       </header>
 
+      {/* main section*/}
       <section className="Section">
         <nav className="Nav">
-          <UserPanel></UserPanel>
           <GetUsers></GetUsers>
         </nav>
         <article className="Article">
@@ -24,10 +25,11 @@ const HomePage = () => {
         </article>
       </section>
 
-      <footer>
-        Footer
+      {/* footer section*/}
+      <footer className="Footer">
+        <MessageBar></MessageBar>
       </footer>
-    </div>
+    </>
   );
 };
 

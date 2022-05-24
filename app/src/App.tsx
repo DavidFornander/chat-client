@@ -1,5 +1,5 @@
 //Packages, Features, etc
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material';
 
@@ -14,6 +14,7 @@ import HomePage from './pages/Home.page';
 let name: String = "David";
 
 const App: React.FC = () => {
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

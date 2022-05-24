@@ -1,9 +1,10 @@
 import { TextField, Button } from '@mui/material'
 import React, { FormEvent } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { add, selectPosts } from '../../store';
+import { selectPosts } from '../../store';
 import "../../index.css";
 import { positions } from '@mui/system';
+import { add } from '../../reducers/PostReducer';
 
 const MessageBar = () => {
 
