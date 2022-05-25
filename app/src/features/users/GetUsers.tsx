@@ -4,24 +4,32 @@ import { postSlice } from '../chat/chatSlice';
 import Card from '@mui/material/Card';
 import React from 'react';
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Hidden } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, userSlice } from './userSlice';
+import { selectUsers } from '../../store';
 
 const url_users = 'http://localhost:3000/users';
 
 const GetUsers = () => {
 
-    const [users, setUsers] = useState([{
-        user_id: 0,
-        name: 'anonymus',
-        email: 'anonymus@gmail.com',
-        password: 'init'
-    }]);
+    // const [users, setUsers] = useState([{
+    //     user_id: 0,
+    //     name: 'anonymus',
+    //     email: 'anonymus@gmail.com',
+    //     password: 'init'
+    // }]);
+
+    const users = useSelector(selectUsers)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchUsersOnLoad = async () => {
           try {
             const { data } = await axios.get(url_users)
             console.log(data);
-            setUsers(data);
+            //setUsers(data);
+            dispatch(addUser(data))
           } catch (error) {
             console.log(error)
           }
@@ -33,7 +41,7 @@ const GetUsers = () => {
         try {
             const { data } = await axios.get(url_users)
             console.log(data);
-            setUsers(data);
+            //setUsers(data);
         } catch (error) {
             console.log(error)
         }

@@ -10,6 +10,7 @@ import { theme } from './shared/theme'
 //Pages
 import LoginPage from './pages/LogIn.page';
 import HomePage from './pages/Home.page';
+import OtherPage from './pages/Other.page';
 
 let name: String = "David";
 
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/messages' element={<HomePage />} />
+          <Route path='/other' element={<OtherPage/>}/>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

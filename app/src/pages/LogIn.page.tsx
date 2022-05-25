@@ -1,5 +1,4 @@
 import "../index.css"
-import { Link } from 'react-router-dom'
 import LogInForm from "../features/logIn/LogInForm"
 
 const LoginPage = () => {

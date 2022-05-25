@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import "../index.css"
 import MessagePanel from '../features/chat/MessagePanel';
 import MessageBar from '../features/chat/MessageBar';
@@ -14,7 +16,8 @@ const HomePage = () => {
     <>
       {/* header section*/}
       <header className='Header'>
-        QTE &lt;3
+        QTE &lt;3 
+        <Link to="/other">Test page</Link>
       </header>
 
       {/* main section*/}
