@@ -2,7 +2,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import React, { FormEvent, useState } from 'react'
-import { add } from '../../reducers/PostReducer';
 
 const url = 'http://localhost:3000/posts';
 

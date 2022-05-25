@@ -27,14 +27,6 @@ const HomePage = () => {
         </nav>
         <article className="Article">
           <GetPosts/>
-
-          <div>
-            <MessagePanel></MessagePanel>
-            <MessageBar></MessageBar>
-          </div>
-
-
-
         </article>
       </section>
 

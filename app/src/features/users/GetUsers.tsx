@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+
 import axios from 'axios';
-import { postSlice } from '../chat/chatSlice';
 import Card from '@mui/material/Card';
 import React from 'react';
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Hidden } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, userSlice } from './userSlice';
+
+import { addUser } from './userSlice';
 import { selectUsers } from '../../store';
 
 const url_users = 'http://localhost:3000/users';
@@ -18,30 +18,19 @@ const GetUsers = () => {
     //     email: 'anonymus@gmail.com',
     //     password: 'init'
     // }]);
-
+    
     const users = useSelector(selectUsers)
 
-    const dispatch = useDispatch()
+    const user = users[0]
 
-    useEffect(() => {
-        const fetchUsersOnLoad = async () => {
-          try {
-            const { data } = await axios.get(url_users)
-            console.log(data);
-            //setUsers(data);
-            dispatch(addUser(data))
-          } catch (error) {
-            console.log(error)
-          }
-        };
-        fetchUsersOnLoad();
-       }, []);
+    const dispatch = useDispatch()
 
     const fetchUsersManual = async () => {
         try {
             const { data } = await axios.get(url_users)
             console.log(data);
             //setUsers(data);
+            dispatch(addUser(data))
         } catch (error) {
             console.log(error)
         }

@@ -22,7 +22,7 @@ export const commentSlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<String>) => {
+        addComment: (state, action: PayloadAction<String>) => {
             state.comments = [
                 ...state.comments,
                 {
@@ -39,6 +39,6 @@ export const commentSlice = createSlice({
     },
 })
 
-export const { add } = commentSlice.actions
+export const { addComment } = commentSlice.actions
 
 

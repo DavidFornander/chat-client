@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-import { postSlice } from '../chat/chatSlice';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -19,6 +18,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import MessagePanel from '../chat/MessagePanel';
 import MessageBar from '../chat/MessageBar';
+import { selectPosts } from '../../store';
+import { useSelector } from 'react-redux';
+
 
 
 const url_post = 'http://localhost:3000/posts';
@@ -46,30 +48,13 @@ const GetPosts = () => {
 
   const handleExpandClick = () => {setExpanded(!expanded);};
 
-  const [posts, setPosts] = useState([{
-    id: 0,
-    user_id: 0,
-    text: '',
-  }]);
+  const posts = useSelector(selectPosts)
 
-  useEffect(() => {
-    const fetchPostsOnLoad = async () => {
-      try {
-        const { data } = await axios.get(url_post)
-        console.log(data);
-        setPosts(data);
-      } catch (error) {
-        console.log(error)
-      }
-    };
-    fetchPostsOnLoad();
-   }, []);
 
   const fetchPostsManual = async () => {
     try {
       const { data } = await axios.get(url_post)
       console.log(data);
-      setPosts(data);
     } catch (error) {
       console.log(error)
     }
@@ -139,8 +124,7 @@ const GetPosts = () => {
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <MessagePanel></MessagePanel>
-                  <MessageBar></MessageBar>
+                  Text här
                 </CardContent>
               </Collapse>
             </Card>
