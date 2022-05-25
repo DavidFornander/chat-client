@@ -25,7 +25,6 @@ const LogInForm = () => {
                 console.log(error);
             }
         }
-
     };
 
     return (

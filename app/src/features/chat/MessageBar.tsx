@@ -8,7 +8,6 @@ import { add } from '../../reducers/PostReducer';
 
 const MessageBar = () => {
 
-  const posts = useSelector(selectPosts)
   const dispatch = useDispatch();
 
   const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {

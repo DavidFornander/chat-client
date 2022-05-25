@@ -1,24 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { postSlice } from '../chat/chatSlice';
 import Card from '@mui/material/Card';
 import React from 'react';
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Hidden } from '@mui/material';
 
-const url = 'http://localhost:3000/users';
+const url_users = 'http://localhost:3000/users';
 
 const GetUsers = () => {
 
     const [users, setUsers] = useState([{
-        id: 0,
-        name: 'init',
-        email: 'init',
+        user_id: 0,
+        name: 'anonymus',
+        email: 'anonymus@gmail.com',
         password: 'init'
     }]);
 
-    const fetchUsers = async () => {
+    useEffect(() => {
+        const fetchUsersOnLoad = async () => {
+          try {
+            const { data } = await axios.get(url_users)
+            console.log(data);
+            setUsers(data);
+          } catch (error) {
+            console.log(error)
+          }
+        };
+        fetchUsersOnLoad();
+       }, []);
+
+    const fetchUsersManual = async () => {
         try {
-            const { data } = await axios.get(url)
+            const { data } = await axios.get(url_users)
             console.log(data);
             setUsers(data);
         } catch (error) {
@@ -28,33 +41,35 @@ const GetUsers = () => {
 
     function UL<T>({
         items,
-        render,
-        render2,
+        render_name,
+        render_email,
+        render_user_id,
     }: React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLUListElement>,
         HTMLUListElement
     > & {
         items: T[];
-        render: (item: T) => React.ReactNode;
-        render2: (item: T) => React.ReactNode;
+        render_name: (item: T) => React.ReactNode;
+        render_email: (item: T) => React.ReactNode;
+        render_user_id: (item: T) => React.ReactNode;
     }) {
         return (
-            <ul style={{margin: 0}}>
+            <ul style={{ margin: 0 }}>
                 {items.map((item, index) => (
-                    <li style={{margin: 0, padding:0, }} key={index} >
-                        <Card sx={{ 
-                            padding: 1, 
-                            width: 1, 
-                            height: 1, 
-                            bgColor: 'background.paper' 
-                            }}>
-                            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    <li key={index} >
+                        <Card sx={{
+                            padding: 1,
+                            width: 1,
+                            height: 1,
+                            bgColor: 'background.paper'
+                        }}>
+                            <List sx={{ minWidth: 300, bgcolor: 'background.paper' }}>
                                 <ListItem alignItems="flex-start">
                                     <ListItemAvatar>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                        <Avatar alt={""} src="/static/images/avatar/1.jpg" />
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={render(item)}
+                                        primary={render_name(item)}
                                         secondary={
                                             <React.Fragment>
                                                 <Typography
@@ -63,11 +78,19 @@ const GetUsers = () => {
                                                     variant="body2"
                                                     color="text.primary"
                                                 >
-                                                    {render2(item)}
+                                                    {render_email(item)}
                                                 </Typography>
                                             </React.Fragment>
                                         }
                                     />
+                                    <Typography
+                                        sx={{ display: 'inline' }}
+                                        component="span"
+                                        variant="body2"
+                                        color="text.primary"
+                                    >
+                                        Usr_ID:{render_user_id(item)}
+                                    </Typography>
                                 </ListItem>
                             </List>
                         </Card>
@@ -79,16 +102,16 @@ const GetUsers = () => {
 
 
     return (
-        <div style={{margin: 0}}>
+        <div style={{ width: '100%', margin: 0 }}>
             <UL
-                //onLoad={getUser}
                 items={users}
-                render={(data) => <>{data.name}</>}
-                render2={(data) => <>{data.email}</>}
+                render_name={(data) => <>{data.name}</>}
+                render_email={(data) => <>{data.email}</>}
+                render_user_id={(data) => <>{data.user_id}</>}
             >
             </UL>
-            <button className='btn' onClick={fetchUsers}>
-                Get Users
+            <button className='btn' onClick={fetchUsersManual}>
+                Update Users
             </button>
         </div>
     )

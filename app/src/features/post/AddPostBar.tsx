@@ -8,48 +8,46 @@ const url = 'http://localhost:3000/posts';
 
 const AddPostBar = () => {
 
-    const [post, setPost] = useState({
+    // Template for "posting" a post
+    const post = {
         user_id: 0,
         text: 'init',
-    });
+    };
 
-    const addPost = async (temp_data: typeof post ) => {
+    // Adds new posts through axios connection to database
+    const addPost = async (temp_data: typeof post) => {
         try {
             axios.post(url, temp_data)
-            .then(function(res){
-                console.log(res);   
-            })
-            .catch(function(res){
-                console.log(res)
-            })
+                .then(function (res) {
+                    console.log(res);
+                })
+                .catch(function (res) {
+                    console.log(res)
+                })
 
         } catch (error) {
             console.log(error)
         }
-    };  
+    };
 
+    // On submit handler, takes data from form and calls addPost function
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+
         const target = e.target as typeof e.target & {
             temp_user_id: { value: number }
             temp_text: { value: string }
         }
 
-        console.log(target);
-        
-
-        if (target.temp_user_id.value!= 0 && target.temp_text.value!= "" ) {
-            addPost({
-                user_id: target.temp_user_id.value,
-                text: target.temp_text.value  
-            })
+        //Check that no fields are empty
+        if (target.temp_user_id.value != 0 && target.temp_text.value != "") {
+            addPost({user_id: target.temp_user_id.value, text: target.temp_text.value})
             console.log("msg: Sent")
-        }    
+        }
     }
 
     return (
-        <div>
+        <div className='Footer_div'>
             <form onSubmit={onSubmitHandler} className="form">
                 <TextField
                     sx={{ width: 1 / 5 }}
@@ -60,7 +58,7 @@ const AddPostBar = () => {
                     label='User ID'
                 />
                 <TextField
-                    sx={{ width: 2 / 5, marginLeft: 4, marginRight:4 }}
+                    sx={{ width: 5 / 10, marginLeft: 4, marginRight: 4 }}
                     type='text'
                     name='temp_text'
                     id='temp_text'
@@ -83,6 +81,4 @@ const AddPostBar = () => {
 
 export default AddPostBar
 
-function dispatch(arg0: any) {
-    throw new Error('Function not implemented.');
-}
+

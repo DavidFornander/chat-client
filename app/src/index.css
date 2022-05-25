@@ -124,8 +124,15 @@ body {
   position: absolute;
   height: auto;
   width: 100vw;
+  bottom: 0;
 }
-/*bottom: 0;*/
+
+.Footer_div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .Section::after {
   content: "";
@@ -195,7 +202,7 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
+  background: var(--primary-300);
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -256,12 +263,12 @@ ul {
 
 .form {
   width: 90vw;
-  max-width: var(--fixed-width);
   background: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
-  padding: 2rem 2.5rem;
-  margin: 3rem auto;
+  padding: 1rem 1.5rem;
+  margin: 1rem 1rem;
+  
 }
 .form-label {
   display: block;

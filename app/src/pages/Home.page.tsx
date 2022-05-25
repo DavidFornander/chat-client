@@ -1,7 +1,6 @@
 import "../index.css"
 import MessagePanel from '../features/chat/MessagePanel';
 import MessageBar from '../features/chat/MessageBar';
-import Post from "../features/post/Post";
 import UserPanel from "../features/chat/UserPanel";
 import GetUsers from "../features/users/GetUsers";
 import GetPosts from "../features/post/GetPosts";
@@ -25,6 +24,14 @@ const HomePage = () => {
         </nav>
         <article className="Article">
           <GetPosts/>
+
+          <div>
+            <MessagePanel></MessagePanel>
+            <MessageBar></MessageBar>
+          </div>
+
+
+
         </article>
       </section>
 
@@ -32,6 +39,8 @@ const HomePage = () => {
       <footer className="Footer">
         <AddPostBar/>
       </footer>
+
+
     </>
   );
 };

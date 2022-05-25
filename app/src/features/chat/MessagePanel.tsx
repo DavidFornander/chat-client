@@ -5,7 +5,6 @@ import { selectPosts } from '../../store';
 
 const MessagePanel = () => {
   const posts = useSelector(selectPosts)
-  const dispatch = useDispatch();
 
   function UL<T>({
     items,
