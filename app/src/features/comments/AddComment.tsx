@@ -2,19 +2,25 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import React, { FormEvent, useState } from 'react'
+import { addComment } from './commentSlice';
 
-const url = 'http://localhost:3000/posts';
+const url = 'http://localhost:3000/api/comments';
 
-const AddPostBar = () => {
+type PosterProps = {
+    post_id: number
+  } 
 
-    // Template for "posting" a post
-    const post = {
-        user_id: 0,
-        text: 'init',
+const AddComment = (props: PosterProps) => {
+
+    // Post template 
+    const comment = {
+        post_id: 0,
+        name: 'init',
+        content: 'init',
     };
 
-    // Adds new posts through axios connection to database
-    const addPost = async (temp_data: typeof post) => {
+    // Adds new posts to database
+     const addComment = async (temp_data: typeof comment) => {
         try {
             axios.post(url, temp_data)
                 .then(function (res) {
@@ -29,35 +35,42 @@ const AddPostBar = () => {
         }
     };
 
-    // On submit handler, takes data from form and calls addPost function
+    // Submithandler for form 
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const target = e.target as typeof e.target & {
-            temp_user_id: { value: number }
-            temp_text: { value: string }
+            temp_name: { value: string }
+            temp_text: { value: string }            
         }
 
         //Check that no fields are empty
-        if (target.temp_user_id.value != 0 && target.temp_text.value != "") {
-            addPost({user_id: target.temp_user_id.value, text: target.temp_text.value})
-            console.log("msg: Sent")
+        if (target.temp_name.value != "" && target.temp_text.value != "") {
+            addComment({
+                post_id: props.post_id,
+                name: target.temp_name.value,
+                content: target.temp_text.value})
+
+                console.log(target.temp_text.value);
+                console.log("msg: Sent")
+  
         }
     }
 
     return (
-        <div className='Footer_div'>
-            <form onSubmit={onSubmitHandler} className="form">
-                <TextField
-                    sx={{ width: 1 / 5 }}
-                    type='number'
-                    name='temp_user_id'
-                    id='temp_user_id'
+        <div>
+            <form onSubmit={onSubmitHandler}>
+                
+            <TextField
+                    sx={{ width: 1.5 / 10 }}
+                    type='text'
+                    name='temp_name'
+                    id='temp_name'
                     size='small'
-                    label='User ID'
+                    label='Name'
                 />
                 <TextField
-                    sx={{ width: 5 / 10, marginLeft: 4, marginRight: 4 }}
+                    sx={{ width: 5/10, marginLeft: 4, marginRight: 5 }}
                     type='text'
                     name='temp_text'
                     id='temp_text'
@@ -78,6 +91,6 @@ const AddPostBar = () => {
     )
 }
 
-export default AddPostBar
+export default AddComment
 
 

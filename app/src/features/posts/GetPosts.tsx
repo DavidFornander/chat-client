@@ -16,21 +16,21 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-import MessagePanel from '../chat/MessagePanel';
-import MessageBar from '../chat/MessageBar';
-import { selectPosts } from '../../store';
+import { selectComments, selectPosts } from '../../store';
 import { useSelector } from 'react-redux';
+import GetComments from '../comments/GetComments';
+import AddComment from '../comments/AddComment';
 
 
-
-const url_post = 'http://localhost:3000/posts';
-const url_user_name = 'http://localhost:3000/users:';
+const url_post = 'http://localhost:3000/api/posts';
+const url_user_name = 'http://localhost:3000/api/users:';
 
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
 
+// FIX CSS, Lägg i klass, sen ny klass 
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -45,30 +45,24 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 const GetPosts = () => {
   const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {setExpanded(!expanded);};
-
+  const handleExpandClick = () => { setExpanded(!expanded); };
+  
   const posts = useSelector(selectPosts)
+  const comments = useSelector(selectComments)
 
 
-  const fetchPostsManual = async () => {
-    try {
-      const { data } = await axios.get(url_post)
-      console.log(data);
-    } catch (error) {
-      console.log(error)
-    }
-  };
+  //FILTER
+  const filter = (arr: any[], post_id: number) => {
+    let filtered_comments: any[] = []
+    arr.forEach(element => {
+      if (element.post_id == post_id) {
+        filtered_comments.push(element)
+      }
+    });
+    return (filtered_comments)
+  }
 
-  const fetchUserName = async (key: number) => {
-    try {
-      const { data } = await axios.get(url_user_name.concat(key.toString()))
-      console.log(data);
-    } catch (error) {
-      console.log(error)
-    }
-  };
-
+  // Function for desplaying posts
   function UL<T>({
     items,
     render_name,
@@ -85,7 +79,7 @@ const GetPosts = () => {
       <ul style={{ margin: 0 }}>
         {items.map((item, index) => (
           <li style={{ margin: 0, padding: 0, }} key={index} >
-            <Card sx={{ maxWidth: 900 }}>
+            <Card sx={{ maxWidth: 900, margin: 1 }}>
               <CardHeader
                 avatar={
                   <Avatar sx={{ bgcolor: purple[200] }} aria-label="recipe">
@@ -98,7 +92,7 @@ const GetPosts = () => {
                   </IconButton>
                 }
                 title={render_name(item)}
-                subheader="Maj, 2022 (placeholder date)"
+                subheader="Maj, 2022 (placeholder)"
               />
 
               <CardContent>
@@ -124,7 +118,8 @@ const GetPosts = () => {
               </CardActions>
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  Text här
+                  <GetComments posts_filtered={filter(comments, index)} />
+                  <AddComment post_id={index} />
                 </CardContent>
               </Collapse>
             </Card>
@@ -135,17 +130,16 @@ const GetPosts = () => {
   }
 
 
+
+
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', margin: 5 }}>
       <UL
         items={posts}
         render_name={(data) => <>{data.user_id}</>}
         render_text={(data) => <>{data.text}</>}
       >
       </UL>
-      <button className='btn' onClick={fetchPostsManual}>
-        Update Posts
-      </button>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { configureStore} from "@reduxjs/toolkit";
 import { commentSlice } from "./features/comments/commentSlice";
 import { userSlice } from "./features/users/userSlice";
-import { postSlice } from "./features/post/postSlice";
+import { postSlice } from "./features/posts/postSlice";
 //import { postSlice } from "./reducers/PostReducer";
 
 

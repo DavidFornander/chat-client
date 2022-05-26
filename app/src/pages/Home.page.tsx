@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom'
 
 import "../index.css"
-import MessagePanel from '../features/chat/MessagePanel';
-import MessageBar from '../features/chat/MessageBar';
-import UserPanel from "../features/chat/UserPanel";
 import GetUsers from "../features/users/GetUsers";
-import GetPosts from "../features/post/GetPosts";
-import AddPostBar from "../features/post/AddPostBar";
+import GetPosts from "../features/posts/GetPosts";
+import AddPostBar from "../features/posts/AddPost";
 
 
 

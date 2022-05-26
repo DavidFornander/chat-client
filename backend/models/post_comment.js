@@ -20,8 +20,8 @@ post_comment.init({
       key: 'post_id',
     }
   },
-  user_id: { // Foreign Key
-    type: DataTypes.INTEGER,
+  name: {
+    type: DataTypes.STRING,
 
     reference: {
       model: user_account,

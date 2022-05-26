@@ -15,12 +15,12 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { addUser } from './features/users/userSlice';
 import { addComment } from './features/comments/commentSlice';
-import { addPost } from './features/post/postSlice';
+import { addPost } from './features/posts/postSlice';
 
 //URLs
-const url_users = 'http://localhost:3000/users';
-const url_posts = 'http://localhost:3000/posts';
-const url_comments = 'http://localhost:3000/comments'
+const url_users = 'http://localhost:3000/api/users';
+const url_posts = 'http://localhost:3000/api/posts';
+const url_comments = 'http://localhost:3000/api/comments'
 
 
 const App: React.FC = () => {
@@ -32,7 +32,6 @@ const App: React.FC = () => {
       try {
         const { data } = await axios.get(url_users)
         console.log(data);
-        //setUsers(data);
         dispatch(addUser(data))
       } catch (error) {
         console.log(error)
@@ -43,8 +42,6 @@ const App: React.FC = () => {
         const { data } = await axios.get(url_posts)
         console.log(data);
         console.log("this");
-        
-        //setUsers(data);
         dispatch(addPost(data))
       } catch (error) {
         console.log(error)
@@ -54,7 +51,6 @@ const App: React.FC = () => {
       try {
         const { data } = await axios.get(url_comments)
         console.log(data);
-        //setUsers(data);
         dispatch(addComment(data))
       } catch (error) {
         console.log(error)
@@ -62,8 +58,8 @@ const App: React.FC = () => {
     };
     fetchUsersOnLoad();
     fetchPostsOnLoad();
-    //fetchCommentsOnLoad();
-  }, []);
+    fetchCommentsOnLoad();
+  }, );
 
   return (
     <ThemeProvider theme={theme}>
