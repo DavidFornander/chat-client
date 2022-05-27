@@ -11,7 +11,7 @@ import './App.css';
 import { theme } from '../shared/theme'
 import LoginPage from '../pages/LogIn.page';
 import HomePage from '../pages/Home.page';
-import OtherPage from '../pages/Other.page';
+import OtherPage from '../pages/Test.page';
 ;
 
 // ----- URLs to API -----
@@ -65,7 +65,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path='/' element={<LoginPage />} />
           <Route path='/messages' element={<HomePage />} />
-          <Route path='/other' element={<OtherPage />} />
+          <Route path='/test' element={<OtherPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

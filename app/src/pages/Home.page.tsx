@@ -13,7 +13,7 @@ const HomePage = () => {
       {/* header section*/}
       <header className='Header'>
         QTE &lt;3 
-        <Link to="/other">Test page</Link>
+        <Link to="/test">Test page</Link>
       </header>
 
       {/* main section*/}

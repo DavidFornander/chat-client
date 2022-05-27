@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // URL to database
-const url = 'http://localhost:3000/api/users';
+const url_users = 'http://localhost:3000/api/users';
 
 
 const LogInForm = () => {
@@ -19,7 +19,7 @@ const LogInForm = () => {
       
         if( name != "" && email != "" && password != "" ){
             try {
-                const resp = await axios.post(url, { name: name, email: email, password: password })
+                const resp = await axios.post(url_users, { name: name, email: email, password: password })
                 navigate("messages")
             } catch (error) {
                 console.log(error);
