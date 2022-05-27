@@ -1,61 +1,79 @@
-import { FC, FormEvent } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import store, { selectPosts, add } from '../../store';
-
-import { Box, TextField, Typography, InputLabel, Button } from '@mui/material';
+// URL to database
+const url = 'http://localhost:3000/api/users';
 
 
+const LogInForm = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
 
-const LogInForm: FC = () => {
-
-    const posts = useSelector(selectPosts)
-    const dispatch = useDispatch();
     let navigate = useNavigate();
 
-    const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+    
+    const onSubmitHandler = async (e: any) => { 
         e.preventDefault();
-        const target = e.target as typeof e.target & {
-            name: {value: string}
-            usr: {value: string}
+      
+        if( name != "" && email != "" && password != "" ){
+            try {
+                const resp = await axios.post(url, { name: name, email: email, password: password })
+                navigate("messages")
+            } catch (error) {
+                console.log(error);
+            }
         }
-
-        console.log(target.name.value)
-        
-        if (target.name.value != "") {
-            dispatch(add(target.name.value))
-            navigate('messages')
-        }
-    }
+    };
 
     return (
-        <Box sx={{
-            border: 1,
-            padding: 2,
-            width: '300px',
-            marginTop: 2,
-        }}
-        >
-            <form onSubmit={onSubmitHandler}>
-                <Typography textAlign='center' fontWeight='bold'> Welcome </Typography>
-                <InputLabel> Name</InputLabel>
-                <TextField type='text' name='name' id='name' fullWidth />
-                <Button
-                    style={{
-                        marginTop: 10,
-                        padding: 2,
-                        backgroundColor: '#0fcf50'
-                    }}
-                    type='submit'
-                    fullWidth
-                >
-                    log-in
-                </Button>
-            </form>
-        </Box>
-    )
-}
+        <section>
+            <h2 className='text-center'>QTE Chat &lt;3</h2>
+            <form className='form' onSubmit={onSubmitHandler}>
+                <div className='form-row'>
+                    <label htmlFor='name' className='form-label'>
+                        name
+                    </label>
+                    <input
+                        type='text'
+                        className='form-input'
+                        id='name'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
+                <div className='form-row'>
+                    <label htmlFor='email' className='form-label'>
+                        email
+                    </label>
+                    <input
+                        type='email'
+                        className='form-input'
+                        id='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
 
-export default LogInForm
+                <div className='form-row'>
+                    <label htmlFor='password' className='form-label'>
+                        password
+                    </label>
+                    <input
+                        type='password'
+                        className='form-input'
+                        id='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+
+                <button type='submit' className='btn btn-block'>
+                    login
+                </button>
+            </form>
+        </section>
+    );
+};
+export default LogInForm;
