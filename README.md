@@ -89,10 +89,11 @@ To get a local copy up and running follow these simple steps.
    npm start
    ```
    
-#### OBS! At this stage the terminal may promt you to change port number to an avilable port. 
-Accept the prompt and the app should be accessible at the port number displayed in your terminal. Default adress: [[http://localhost:3000](http://localhost:3000)] Backup adress: [[http://localhost:3001](http://localhost:3001)]
-#
-#
+#### OBS! At this stage the terminal may promt you to change port number to an available port. 
+Accept the prompt and the app should be accessible at the port number displayed in your terminal. 
+- Default adress: [[http://localhost:3000](http://localhost:3000)] 
+- Backup adress: [[http://localhost:3001](http://localhost:3001)]
+
 <!-- CONTACT -->
 ## Contact
 
