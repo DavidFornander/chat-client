@@ -6,7 +6,7 @@ import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Hidde
 import { useSelector } from 'react-redux';
 
 import { addUser } from './userSlice';
-import { selectUsers } from '../../store';
+import { selectUsers } from '../../app/store';
 
 const GetUsers = () => {
     

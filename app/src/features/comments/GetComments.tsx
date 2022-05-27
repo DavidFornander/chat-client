@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
 import { useSelector } from 'react-redux';
-import { selectComments } from '../../store';
-import { SetState } from 'immer/dist/internal';
+import { selectComments } from '../../app/store';
 
 
 
@@ -66,7 +63,6 @@ const GetComments = (props: PostProps) => {
     }
 
     return (
-        <div style={{ width: '100%', margin: 0 }}>
         <UL
             items={props.posts_filtered}
             render_name={(data) => <>{data.name}</>}
@@ -74,7 +70,6 @@ const GetComments = (props: PostProps) => {
             render_user_id={(data) => <>{data.comment_id}</>}
         >
         </UL>
-    </div>
     )
 }
 

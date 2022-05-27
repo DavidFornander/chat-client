@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
-
 
 interface Comment {
     comment_id: Number,
@@ -8,7 +6,6 @@ interface Comment {
     name: String,
     content: String,
 };
-
 
 interface commentSliceState {
     comments: Comment[];
@@ -23,7 +20,7 @@ export const commentSlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        addComment: (state, action: PayloadAction<Comment[]>) => {
+        addComments: (state, action: PayloadAction<Comment[]>) => {
             state.comments = action.payload
         },
         remove: (state, action: PayloadAction<Number>) =>{
@@ -32,6 +29,6 @@ export const commentSlice = createSlice({
     },
 })
 
-export const { addComment } = commentSlice.actions
+export const { addComments } = commentSlice.actions
 
 

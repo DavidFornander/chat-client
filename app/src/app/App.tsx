@@ -1,30 +1,29 @@
-//Packages, Features, etc
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material';
-
-//Css, Images, etc
-import './App.css';
-import { theme } from './shared/theme'
-
-//Pages
-import LoginPage from './pages/LogIn.page';
-import HomePage from './pages/Home.page';
-import OtherPage from './pages/Other.page';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { addUser } from './features/users/userSlice';
-import { addComment } from './features/comments/commentSlice';
-import { addPost } from './features/posts/postSlice';
 
-//URLs
+import { addUser } from '../features/users/userSlice';
+import { addComments } from '../features/comments/commentSlice';
+import { addPosts } from '../features/posts/postSlice';
+import './App.css';
+import { theme } from '../shared/theme'
+import LoginPage from '../pages/LogIn.page';
+import HomePage from '../pages/Home.page';
+import OtherPage from '../pages/Other.page';
+;
+
+// ----- URLs to API -----
 const url_users = 'http://localhost:3000/api/users';
 const url_posts = 'http://localhost:3000/api/posts';
 const url_comments = 'http://localhost:3000/api/comments'
+// -----------------------
 
 
 const App: React.FC = () => {
 
+  // Redux store
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -41,8 +40,7 @@ const App: React.FC = () => {
       try {
         const { data } = await axios.get(url_posts)
         console.log(data);
-        console.log("this");
-        dispatch(addPost(data))
+        dispatch(addPosts(data))
       } catch (error) {
         console.log(error)
       }
@@ -51,7 +49,7 @@ const App: React.FC = () => {
       try {
         const { data } = await axios.get(url_comments)
         console.log(data);
-        dispatch(addComment(data))
+        dispatch(addComments(data))
       } catch (error) {
         console.log(error)
       }

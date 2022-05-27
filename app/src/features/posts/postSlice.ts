@@ -19,7 +19,7 @@ export const postSlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        addPost: (state, action: PayloadAction<Post[]>) => {
+        addPosts: (state, action: PayloadAction<Post[]>) => {
             state.posts = action.payload
         },
         remove: (state, action: PayloadAction<Number>) =>{
@@ -28,5 +28,5 @@ export const postSlice = createSlice({
     },
 })
 
-export const { addPost } = postSlice.actions
+export const { addPosts } = postSlice.actions
 

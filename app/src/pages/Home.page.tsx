@@ -6,9 +6,8 @@ import GetPosts from "../features/posts/GetPosts";
 import AddPostBar from "../features/posts/AddPost";
 
 
-
 const HomePage = () => {
-
+  
   return (
     <>
       {/* header section*/}

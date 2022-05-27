@@ -1,11 +1,19 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
-import React, { FormEvent, useState } from 'react'
+import { FormEvent } from 'react'
+import { useDispatch } from 'react-redux';
 
-const url = 'http://localhost:3000/api/posts';
+import { addPosts } from './postSlice';
+
+// URLs to api
+const url_posts = 'http://localhost:3000/api/posts';
+
 
 const AddPostBar = () => {
+
+    // Redux store
+    const dispatch = useDispatch()
 
     // Post template 
     const post = {
@@ -14,9 +22,9 @@ const AddPostBar = () => {
     };
 
     // Adds new posts to database
-     const addPost = async (temp_data: typeof post) => {
+    const addPostToDb = async (temp_data: typeof post) => {
         try {
-            axios.post(url, temp_data)
+            axios.post(url_posts, temp_data)
                 .then(function (res) {
                     console.log(res);
                 })
@@ -24,6 +32,16 @@ const AddPostBar = () => {
                     console.log(res)
                 })
 
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const fetchPosts = async () => {
+        try {
+            const { data } = await axios.get(url_posts)
+            console.log(data);
+            dispatch(addPosts(data))
         } catch (error) {
             console.log(error)
         }
@@ -40,8 +58,13 @@ const AddPostBar = () => {
 
         //Check that no fields are empty
         if (target.temp_user_id.value != 0 && target.temp_text.value != "") {
-            addPost({user_id: target.temp_user_id.value, text: target.temp_text.value})
+            addPostToDb({
+                user_id: target.temp_user_id.value,
+                text: target.temp_text.value
+            })// Sends new comment to database
+
             console.log("msg: Sent")
+            fetchPosts(); // Updates redux store from database
         }
     }
 
@@ -81,4 +104,3 @@ const AddPostBar = () => {
 export default AddPostBar
 
 
- 
