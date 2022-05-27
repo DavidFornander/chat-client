@@ -97,7 +97,7 @@ Accept the prompt and the app should be accessible at the port number displayed 
 <!-- CONTACT -->
 ## Contact
 
-David Fornader - david.fornader@hotmail.com
+David Fornader - David.Fornader@hotmail.com
 
 Project Link: [https://github.com/DavidFornander/chat-client](https://github.com/DavidFornander/chat-client)
 
